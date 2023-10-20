@@ -7,7 +7,6 @@ const callToApi = () => {
     .then((response) => response.json())
     .then((response) => {
       // Cuando responde la API podemos limpiar los datos aqui
-
       const scenes = response.map((scenes) => ({
         poster: scenes.poster,
         movie: scenes.movie,

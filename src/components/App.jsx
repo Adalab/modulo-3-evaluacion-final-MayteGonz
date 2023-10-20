@@ -1,27 +1,33 @@
 import '../styles/App.scss';
-// Fichero src/components/App.jsx
 import { useEffect, useState } from 'react';
-import callToApi from '../services/api'; // Importamos el servicio que acabamos de crear
-import ls from '../services/localStorage';
-console.log(ls);
+import callToApi from '../services/api';
+import Filters from './Filters';
+import ListScenes from './ListScenes';
 
 const App = () => {
   // Estados
 
-  const [apiData, setApiData] = useState([]);
-
-  // Llamar a la api con useEffect
+  const [ApiScenes, setApiScenes] = useState([]);
+  const [searchMovie, setSearchMovie] = useState('');
+  const [selectYear, setSelectYear] = useState('');
 
   useEffect(() => {
-    // Dentro de useEffect llamamos a la API
     callToApi().then((response) => {
-      // Cuando la API responde guardamos los datos en el estado para que se vuelva a renderizar el componente
-      setApiData(response);
+      setApiScenes(response);
     });
-    // Aquí ponemos un array vacío porque solo queremos que se llame a la API la primera vez
   }, []);
 
-  return <div></div>;
+  return (
+    <div>
+      <header>
+        <h1>Owen Wilson's "WOW"</h1>
+      </header>
+      <main>
+        <Filters setSearchMovie={setSearchMovie} searchMovie={searchMovie} />
+        <ListScenes apiScenes={ApiScenes} />
+      </main>
+    </div>
+  );
 };
 
 export default App;
