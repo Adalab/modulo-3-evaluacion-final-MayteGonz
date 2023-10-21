@@ -1,23 +1,24 @@
-const Filters = ({ searchMovie, setSearchMovie }) => {
-  /*  const handleInputSearch = (ev) => {
-    setSearchMovie(ev.target.value);
-  }; */
+import MovieFilter from './MovieFilter';
+import YearFilter from './YearFilter';
+const Filters = ({
+  searchMovie,
+  handleChange,
+  selectYear,
+  handleSelect,
+  years,
+}) => {
   const handleForm = (ev) => {
     ev.preventDefault();
   };
   return (
     <section>
       <form onSubmit={handleForm}>
-        {/*    <label htmlFor="search">Movie </label>
-        <input
-          type="search"
-          name="search"
-          placeholder="Write a movie"
-          value={searchMovie}
-          onChange={handleInputSearch}
+        <MovieFilter searchMovie={searchMovie} handleChange={handleChange} />
+        <YearFilter
+          selectYear={selectYear}
+          handleSelect={handleSelect}
+          years={years}
         />
-        <label htmlFor="year"> Year </label>
-        <select name="year" id=""></select> */}
       </form>
     </section>
   );
