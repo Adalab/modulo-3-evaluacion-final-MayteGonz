@@ -8,7 +8,7 @@ import ls from '../services/localStorage';
 const App = () => {
   // Estados
 
-  const [ApiScenes, setApiScenes] = useState(ls.get('scenes', []));
+  const [ApiScenes, setApiScenes] = useState([]);
   const [searchMovie, setSearchMovie] = useState('');
   const [selectYear, setSelectYear] = useState('');
 
@@ -16,7 +16,6 @@ const App = () => {
     if (ApiScenes.length === 0) {
       callToApi().then((response) => {
         setApiScenes(response);
-        ls.set('scenes', response);
       });
     }
   }, [ApiScenes.length]);
@@ -41,6 +40,9 @@ const App = () => {
 
   const getYears = () => {
     const years = ApiScenes.map((scene) => scene.year);
+    const uniqueYears = new Set(years);
+    const yearsArray = [...uniqueYears];
+    return yearsArray.sort();
   };
 
   return (
@@ -54,9 +56,9 @@ const App = () => {
           searchMovie={searchMovie}
           selectYear={selectYear}
           handleSelect={handleSelect}
-          years={years}
+          years={getYears()}
         />
-        <ListScenes apiScenes={filteredScenes} />
+        <ListScenes filteredScenes={filteredScenes} />
       </main>
     </div>
   );
