@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import callToApi from '../services/api';
 import Filters from './Filters';
 import ListScenes from './ListScenes';
+import { Routes, Route } from 'react-router-dom';
 import ls from '../services/localStorage';
 
 const App = () => {
