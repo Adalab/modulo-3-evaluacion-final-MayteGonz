@@ -1,4 +1,5 @@
 import SceneItem from './SceneItem';
+import { Link } from 'react-router-dom';
 const ListScenes = ({ filteredScenes }) => {
   if (filteredScenes.length === 0) {
     return <p>No hay ninguna coincidencia. ¡Prueba con otro título!</p>;
@@ -8,9 +9,11 @@ const ListScenes = ({ filteredScenes }) => {
   );
   const renderScenes = orderedScenes.map((scene) => {
     return (
-      <li className="card" key={scene.id}>
-        <SceneItem scene={scene} />
-      </li>
+      <Link key={scene.id} to={'/scene/' + scene.id} className="card-a">
+        <li className="card" key={scene.id}>
+          <SceneItem scene={scene} />
+        </li>
+      </Link>
     );
   });
 

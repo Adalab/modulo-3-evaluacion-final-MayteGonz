@@ -12,6 +12,7 @@ const callToApi = () => {
         movie: scenes.movie,
         fullLine: scenes.full_line,
         year: scenes.year,
+        audio: scenes.audio,
         id: uuid(),
       }));
 
