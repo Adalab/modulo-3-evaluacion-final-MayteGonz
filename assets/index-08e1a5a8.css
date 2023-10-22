@@ -1,0 +1,1 @@
+*{box-sizing:border-box;margin:0;padding:0;font-family:Poppins,sans-serif}html{font-size:62.5%}.card{list-style:none}.card-a{text-decoration:none;display:flex;flex-direction:column}.card img{width:200px}.container_li{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));grid-gap:10px}
