@@ -3,9 +3,9 @@ import { useEffect, useState } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import ls from '../services/localStorage';
 import callToApi from '../services/api';
-import Filters from './Filters';
-import ListScenes from './ListScenes';
-import SceneDetail from './SceneDetail';
+import Filters from './filters/Filters';
+import ListScenes from './scenes/ListScenes';
+import SceneDetail from './scenes/SceneDetail';
 const App = () => {
   // Estados
 
@@ -36,7 +36,9 @@ const App = () => {
   };
 
   const filteredScenes = apiScenes
-    .filter((scene) => scene.movie.toLowerCase().includes(searchMovie))
+    .filter((scene) =>
+      scene.movie.toLowerCase().includes(searchMovie.toLowerCase())
+    )
     .filter((itemScene) => {
       if (selectYear === '') {
         return true;
@@ -45,10 +47,12 @@ const App = () => {
       }
     });
   const handleClick = () => {
-    console.log('Estoy clickeando el botón');
     ls.remove('scenes');
     ls.remove('search');
-    setapiScenes([]);
+    //si solo digo que setApiScenes está vacío tarda un poco en cargar y muestra el mensaje de vacío.
+    callToApi().then((response) => {
+      setapiScenes(response);
+    });
     setSearchMovie('');
   };
 
@@ -63,7 +67,7 @@ const App = () => {
 
   return (
     <div>
-      <header>
+      <header className="header">
         <h1>Owen Wilson's "WOW"</h1>
       </header>
       <main>
@@ -80,7 +84,10 @@ const App = () => {
                   years={getYears()}
                 />
                 <button onClick={handleClick}>Cambia la lista!</button>
-                <ListScenes filteredScenes={filteredScenes} />
+                <ListScenes
+                  filteredScenes={filteredScenes}
+                  searchMovie={searchMovie}
+                />
               </>
             }
           />

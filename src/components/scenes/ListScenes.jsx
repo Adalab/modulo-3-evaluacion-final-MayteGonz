@@ -1,8 +1,13 @@
+import '../../styles/components/ListScenes.scss';
 import SceneItem from './SceneItem';
 import { Link } from 'react-router-dom';
-const ListScenes = ({ filteredScenes }) => {
+const ListScenes = ({ filteredScenes, searchMovie }) => {
   if (filteredScenes.length === 0) {
-    return <p>No hay ninguna coincidencia. ¡Prueba con otro título!</p>;
+    return (
+      <p>
+        No hay ninguna coincidencia para {searchMovie}. ¡Prueba con otro título!
+      </p>
+    );
   }
   const orderedScenes = [...filteredScenes].sort((a, b) =>
     a.movie.localeCompare(b.movie)
