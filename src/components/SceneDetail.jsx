@@ -1,5 +1,15 @@
+import { useLocation, matchPath } from 'react-router';
 import { Link } from 'react-router-dom';
-const SceneDetail = ({ scene }) => {
+const SceneDetail = ({ apiScenes }) => {
+  const { pathname } = useLocation();
+  const routeData = matchPath('/scene/:id', pathname);
+  const sceneId = routeData !== null ? routeData.params.id : '';
+  const scene = apiScenes.find((scene) => scene.id === sceneId);
+
+  if (scene === undefined) {
+    return <p>No se ha encontrado la escena</p>;
+  }
+
   return (
     <>
       <article>

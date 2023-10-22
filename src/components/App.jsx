@@ -1,57 +1,65 @@
 import '../styles/App.scss';
 import { useEffect, useState } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
-import { useLocation, matchPath } from 'react-router';
-import callToApi from '../services/api';
 import ls from '../services/localStorage';
+import callToApi from '../services/api';
 import Filters from './Filters';
 import ListScenes from './ListScenes';
 import SceneDetail from './SceneDetail';
 const App = () => {
   // Estados
 
-  const [ApiScenes, setApiScenes] = useState([]);
-  const [searchMovie, setSearchMovie] = useState('');
+  const [apiScenes, setapiScenes] = useState(ls.get('scenes', []));
+  const [searchMovie, setSearchMovie] = useState(ls.get('search', ''));
   const [selectYear, setSelectYear] = useState('');
 
   useEffect(() => {
-    if (ApiScenes.length === 0) {
+    if (apiScenes.length === 0) {
       callToApi().then((response) => {
-        setApiScenes(response);
+        setapiScenes(response);
       });
     }
-  }, [ApiScenes.length]);
+  }, [apiScenes.length]);
 
+  useEffect(() => {
+    ls.set('scenes', apiScenes);
+  }, [apiScenes]);
+
+  //al guardar, porque no me guarda la última letra que le escribo?
   const handleChange = (value) => {
     setSearchMovie(value);
+    ls.set('search', searchMovie);
   };
 
   const handleSelect = (value) => {
     setSelectYear(value);
   };
 
-  const filteredScenes = ApiScenes.filter((scene) =>
-    scene.movie.toLowerCase().includes(searchMovie)
-  ).filter((itemScene) => {
-    if (selectYear === '') {
-      return true;
-    } else {
-      return selectYear === itemScene.year.toString();
-    }
-  });
+  const filteredScenes = apiScenes
+    .filter((scene) => scene.movie.toLowerCase().includes(searchMovie))
+    .filter((itemScene) => {
+      if (selectYear === '') {
+        return true;
+      } else {
+        return selectYear === itemScene.year.toString();
+      }
+    });
+  const handleClick = () => {
+    console.log('Estoy clickeando el botón');
+    ls.remove('scenes');
+    ls.remove('search');
+    setapiScenes([]);
+    setSearchMovie('');
+  };
 
   const getYears = () => {
-    const years = ApiScenes.map((scene) => scene.year);
+    const years = apiScenes.map((scene) => scene.year);
     const uniqueYears = new Set(years);
     const yearsArray = [...uniqueYears];
     return yearsArray.sort();
   };
 
   //Encontrar el id y buscar la scena basada en ese id
-  const { pathname } = useLocation();
-  const routeData = matchPath('/scene/:id', pathname);
-  const sceneId = routeData !== null ? routeData.params.id : '';
-  const sceneData = ApiScenes.find((scene) => scene.id === sceneId);
 
   return (
     <div>
@@ -71,6 +79,7 @@ const App = () => {
                   handleSelect={handleSelect}
                   years={getYears()}
                 />
+                <button onClick={handleClick}>Cambia la lista!</button>
                 <ListScenes filteredScenes={filteredScenes} />
               </>
             }
@@ -79,11 +88,12 @@ const App = () => {
             path="/scene/:id"
             element={
               <>
-                <SceneDetail scene={sceneData} />
+                <SceneDetail apiScenes={apiScenes} />
                 <Link to="/">Volver</Link>
               </>
             }
           />
+          <Route path="*" element={<p>No existe esta página</p>} />
         </Routes>
       </main>
     </div>

@@ -19,7 +19,7 @@ const ListScenes = ({ filteredScenes }) => {
 
   return (
     <section>
-      <ul>{renderScenes}</ul>
+      <ul className="container_li">{renderScenes}</ul>
     </section>
   );
 };
