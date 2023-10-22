@@ -1,0 +1,28 @@
+@import '../core/variables';
+.section1 {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 2rem;
+  text-align: center;
+  align-items: center;
+
+  @media (min-width: 1200px) {
+    flex-direction: row;
+    justify-content: space-between;
+    padding-block: 3rem;
+    padding-inline: 4rem;
+  }
+  &_btn {
+    width: 20rem;
+    border: none;
+    color: white;
+    background-color: $violet;
+    border-radius: 2.5rem;
+    padding: 0.5rem;
+    @media (min-width: 768px) {
+      margin: 0.5rem;
+      padding: 0.8rem;
+    }
+  }
+}

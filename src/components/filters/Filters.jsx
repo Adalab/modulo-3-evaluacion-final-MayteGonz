@@ -1,5 +1,6 @@
 import MovieFilter from './MovieFilter';
 import YearFilter from './YearFilter';
+import '../../styles/components/Filters.scss';
 const Filters = ({
   searchMovie,
   handleChange,
@@ -11,16 +12,14 @@ const Filters = ({
     ev.preventDefault();
   };
   return (
-    <section>
-      <form onSubmit={handleForm}>
-        <MovieFilter searchMovie={searchMovie} handleChange={handleChange} />
-        <YearFilter
-          selectYear={selectYear}
-          handleSelect={handleSelect}
-          years={years}
-        />
-      </form>
-    </section>
+    <form className="form" onSubmit={handleForm}>
+      <MovieFilter searchMovie={searchMovie} handleChange={handleChange} />
+      <YearFilter
+        selectYear={selectYear}
+        handleSelect={handleSelect}
+        years={years}
+      />
+    </form>
   );
 };
 

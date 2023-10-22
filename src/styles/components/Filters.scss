@@ -1,0 +1,29 @@
+@import '../core/variables';
+.form {
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    gap: 4rem;
+  }
+  &_label {
+    font-size: 1.5rem;
+    color: $violet;
+    margin: 0rem;
+  }
+  &_input {
+    color: $violet;
+    padding: 0.3rem;
+    border: 1px solid $violet;
+    border-radius: 0.5rem;
+    background-color: white;
+    outline-color: $violet;
+    &::placeholder {
+      color: $violet;
+    }
+    &:hover {
+      border: 2px solid $violet;
+    }
+  }
+}

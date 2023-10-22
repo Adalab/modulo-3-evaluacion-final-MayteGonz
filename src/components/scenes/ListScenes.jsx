@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const ListScenes = ({ filteredScenes, searchMovie }) => {
   if (filteredScenes.length === 0) {
     return (
-      <p>
+      <p className="errorSearch">
         No hay ninguna coincidencia para {searchMovie}. ¡Prueba con otro título!
       </p>
     );
@@ -22,11 +22,7 @@ const ListScenes = ({ filteredScenes, searchMovie }) => {
     );
   });
 
-  return (
-    <section>
-      <ul className="container_li">{renderScenes}</ul>
-    </section>
-  );
+  return <ul className="container_li">{renderScenes}</ul>;
 };
 
 export default ListScenes;

@@ -1,0 +1,7 @@
+.section2 {
+  padding: 2rem;
+  text-align: center;
+  @media (min-width: 768px) {
+    padding-inline: 3rem;
+  }
+}

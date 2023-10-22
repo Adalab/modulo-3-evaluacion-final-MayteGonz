@@ -1,18 +1,33 @@
+@import '../core/variables';
 .card {
+  font-size: 1.2rem;
   list-style: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background-color: rgb(241, 246, 248);
+  color: rgba(0, 0, 0, 0.616);
+  border: 2px rgba(0, 0, 0, 0.048) solid;
+  padding: 12px;
 
-  &-a {
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
+  &:hover {
+    transition: 100ms;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+    background-color: rgb(227, 244, 250);
+    color: rgba(0, 0, 0, 0.801);
   }
   & img {
-    width: 200px;
+    width: 190px;
   }
 }
 
+.errorSearch {
+  font-size: 1.6rem;
+  text-align: center;
+  padding-top: 4rem;
+  color: $violet;
+}
 .container_li {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  grid-gap: 10px;
+  grid-gap: 15px;
 }

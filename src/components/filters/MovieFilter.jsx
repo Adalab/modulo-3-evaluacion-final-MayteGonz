@@ -4,8 +4,11 @@ const MovieFilter = ({ searchMovie, handleChange }) => {
   };
   return (
     <>
-      <label htmlFor="search">Movie </label>
+      <label className="form_label" htmlFor="search">
+        Search by Movie{' '}
+      </label>
       <input
+        className="form_input"
         type="search"
         name="search"
         placeholder="Write a movie"

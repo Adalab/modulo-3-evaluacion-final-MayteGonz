@@ -66,28 +66,34 @@ const App = () => {
   //Encontrar el id y buscar la scena basada en ese id
 
   return (
-    <div>
+    <>
       <header className="header">
         <h1>Owen Wilson's "WOW"</h1>
       </header>
-      <main>
+      <main className="main">
         <Routes>
           <Route
             path="/"
             element={
               <>
-                <Filters
-                  handleChange={handleChange}
-                  searchMovie={searchMovie}
-                  selectYear={selectYear}
-                  handleSelect={handleSelect}
-                  years={getYears()}
-                />
-                <button onClick={handleClick}>Cambia la lista!</button>
-                <ListScenes
-                  filteredScenes={filteredScenes}
-                  searchMovie={searchMovie}
-                />
+                <section className="section1">
+                  <Filters
+                    handleChange={handleChange}
+                    searchMovie={searchMovie}
+                    selectYear={selectYear}
+                    handleSelect={handleSelect}
+                    years={getYears()}
+                  />
+                  <button className="section1_btn" onClick={handleClick}>
+                    Change the list!
+                  </button>
+                </section>
+                <section className="section2">
+                  <ListScenes
+                    filteredScenes={filteredScenes}
+                    searchMovie={searchMovie}
+                  />
+                </section>
               </>
             }
           />
@@ -96,14 +102,14 @@ const App = () => {
             element={
               <>
                 <SceneDetail apiScenes={apiScenes} />
-                <Link to="/">Volver</Link>
+                <Link to="/">Back</Link>
               </>
             }
           />
           <Route path="*" element={<p>No existe esta página</p>} />
         </Routes>
       </main>
-    </div>
+    </>
   );
 };
 

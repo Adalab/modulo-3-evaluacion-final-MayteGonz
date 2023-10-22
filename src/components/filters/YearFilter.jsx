@@ -11,8 +11,16 @@ const YearFilter = ({ selectYEar, handleSelect, years }) => {
   };
   return (
     <>
-      <label htmlFor="year"> Year </label>
-      <select value={selectYEar} name="year" id="year" onChange={handleChange}>
+      <label className="form_label" htmlFor="year">
+        Search by Year
+      </label>
+      <select
+        className="form_input"
+        value={selectYEar}
+        name="year"
+        id="year"
+        onChange={handleChange}
+      >
         <option defaultChecked value="">
           All
         </option>
