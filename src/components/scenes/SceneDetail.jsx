@@ -9,20 +9,26 @@ const SceneDetail = ({ apiScenes }) => {
   const scene = apiScenes.find((scene) => scene.id === sceneId);
 
   if (scene === undefined) {
-    return <p>No se ha encontrado la escena</p>;
+    return <p className="errorSearch">No se ha encontrado la escena</p>;
   }
 
   return (
     <>
       <article className="article">
-        <img src={scene.poster} alt={`${scene.poster} poster`} />
-        <h1>{scene.movie}</h1>
-        <p>{scene.fullLine}</p>
-        <p>Director: {scene.director}</p>
-        <p>{scene.year}</p>
-        <Link target="_blank" to={scene.audio}>
-          Listen the WOW here
-        </Link>
+        <img
+          className="article_img"
+          src={scene.poster}
+          alt={`${scene.poster} poster`}
+        />
+        <div className="article_detail">
+          <h1>{scene.movie}</h1>
+          <p>{scene.fullLine}</p>
+          <p>Director: {scene.director}</p>
+          <p>{scene.year}</p>
+          <Link target="_blank" to={scene.audio}>
+            Listen the WOW here
+          </Link>
+        </div>
       </article>
     </>
   );

@@ -9,11 +9,19 @@
 
 .btnBack {
   text-decoration: none;
-  border-radius: 0.5rem;
   font-size: 1.4rem;
-  border: solid 2px blue;
+  text-align: center;
   color: $violet;
   display: inline-block;
   padding: 0.5rem;
   margin: 1rem;
+  width: 8rem;
+  border: none;
+  color: white;
+  background-color: $violet;
+  border-radius: 2.5rem;
+  cursor: pointer;
+  @media (min-width: 768px) {
+    width: 12rem;
+  }
 }
