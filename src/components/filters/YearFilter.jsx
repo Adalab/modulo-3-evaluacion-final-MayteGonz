@@ -21,9 +21,7 @@ const YearFilter = ({ selectYEar, handleSelect, years }) => {
         id="year"
         onChange={handleChange}
       >
-        <option defaultChecked value="">
-          All
-        </option>
+        <option value="">All</option>
         {renderYearsOptions()}
       </select>
     </>

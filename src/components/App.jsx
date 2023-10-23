@@ -28,7 +28,7 @@ const App = () => {
   //al guardar, porque no me guarda la última letra que le escribo?
   const handleChange = (value) => {
     setSearchMovie(value);
-    ls.set('search', searchMovie);
+    ls.set('search', value);
   };
 
   const handleSelect = (value) => {
@@ -46,15 +46,6 @@ const App = () => {
         return selectYear === itemScene.year.toString();
       }
     });
-  const handleClick = () => {
-    ls.remove('scenes');
-    ls.remove('search');
-    //si solo digo que setApiScenes está vacío tarda un poco en cargar y muestra el mensaje de vacío.
-    callToApi().then((response) => {
-      setapiScenes(response);
-    });
-    setSearchMovie('');
-  };
 
   const getYears = () => {
     const years = apiScenes.map((scene) => scene.year);
@@ -63,6 +54,15 @@ const App = () => {
     return yearsArray.sort();
   };
 
+  const handleClick = () => {
+    ls.remove('scenes');
+    ls.remove('search');
+    setSearchMovie('');
+    setSelectYear('');
+    callToApi().then((response) => {
+      setapiScenes(response);
+    });
+  };
   //Encontrar el id y buscar la scena basada en ese id
 
   return (
