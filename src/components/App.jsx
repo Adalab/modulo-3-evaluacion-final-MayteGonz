@@ -25,7 +25,6 @@ const App = () => {
     ls.set('scenes', apiScenes);
   }, [apiScenes]);
 
-  //al guardar, porque no me guarda la última letra que le escribo?
   const handleChange = (value) => {
     setSearchMovie(value);
     ls.set('search', value);
@@ -101,12 +100,24 @@ const App = () => {
             path="/scene/:id"
             element={
               <>
+                <Link className="btnBack" to="/">
+                  Back
+                </Link>
                 <SceneDetail apiScenes={apiScenes} />
-                <Link to="/">Back</Link>
               </>
             }
           />
-          <Route path="*" element={<p>No existe esta página</p>} />
+          <Route
+            path="*"
+            element={
+              <>
+                <Link className="errorSearch" to={'/'}>
+                  Vuelve a la página principal
+                </Link>
+                <p className="errorSearch">No existe esta página</p>
+              </>
+            }
+          />
         </Routes>
       </main>
     </>

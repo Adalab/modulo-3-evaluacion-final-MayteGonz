@@ -15,15 +15,15 @@ const ListScenes = ({ filteredScenes, searchMovie }) => {
   );
   const renderScenes = orderedScenes.map((scene) => {
     return (
-      <Link key={scene.id} to={'/scene/' + scene.id} className="card-a">
-        <li className="card" key={scene.id}>
+      <Link key={scene.id} to={'/scene/' + scene.id} className="container_link">
+        <li className="container_card" key={scene.id}>
           <SceneItem scene={scene} />
         </li>
       </Link>
     );
   });
 
-  return <ul className="container_li">{renderScenes}</ul>;
+  return <ul className="container">{renderScenes}</ul>;
 };
 ListScenes.propTypes = {
   filteredScenes: PropTypes.array,
