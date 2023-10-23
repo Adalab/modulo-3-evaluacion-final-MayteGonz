@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 const SceneItem = ({ scene }) => {
   return (
     <>
@@ -7,6 +8,9 @@ const SceneItem = ({ scene }) => {
       <p>{scene.fullLine}</p>
     </>
   );
+};
+SceneItem.propTypes = {
+  scene: PropTypes.object,
 };
 
 export default SceneItem;

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useLocation, matchPath } from 'react-router';
 import { Link } from 'react-router-dom';
 import '../../styles/components/SceneDetail.scss';
@@ -25,6 +26,9 @@ const SceneDetail = ({ apiScenes }) => {
       </article>
     </>
   );
+};
+SceneDetail.propTypes = {
+  apiScenes: PropTypes.array,
 };
 
 export default SceneDetail;

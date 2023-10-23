@@ -1,4 +1,5 @@
-const YearFilter = ({ selectYEar, handleSelect, years }) => {
+import PropTypes from 'prop-types';
+const YearFilter = ({ selectYear, handleSelect, years }) => {
   const handleChange = (ev) => {
     handleSelect(ev.target.value);
   };
@@ -16,7 +17,7 @@ const YearFilter = ({ selectYEar, handleSelect, years }) => {
       </label>
       <select
         className="form_input"
-        value={selectYEar}
+        value={selectYear}
         name="year"
         id="year"
         onChange={handleChange}
@@ -27,5 +28,9 @@ const YearFilter = ({ selectYEar, handleSelect, years }) => {
     </>
   );
 };
-
+YearFilter.propTypes = {
+  selectYear: PropTypes.string,
+  handleSelect: PropTypes.func,
+  years: PropTypes.array,
+};
 export default YearFilter;

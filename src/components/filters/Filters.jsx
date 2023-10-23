@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import MovieFilter from './MovieFilter';
 import YearFilter from './YearFilter';
 import '../../styles/components/Filters.scss';
@@ -23,4 +24,11 @@ const Filters = ({
   );
 };
 
+Filters.propTypes = {
+  searchMovie: PropTypes.string,
+  handleChange: PropTypes.func,
+  selectYear: PropTypes.string,
+  handleSelect: PropTypes.func,
+  years: PropTypes.array,
+};
 export default Filters;

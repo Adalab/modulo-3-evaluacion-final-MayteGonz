@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 const MovieFilter = ({ searchMovie, handleChange }) => {
   const handleInputSearch = (ev) => {
     handleChange(ev.target.value);
@@ -17,6 +18,10 @@ const MovieFilter = ({ searchMovie, handleChange }) => {
       />
     </>
   );
+};
+MovieFilter.propTypes = {
+  searchMovie: PropTypes.string,
+  handleChange: PropTypes.func,
 };
 
 export default MovieFilter;

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import '../../styles/components/ListScenes.scss';
 import SceneItem from './SceneItem';
 import { Link } from 'react-router-dom';
@@ -24,5 +25,8 @@ const ListScenes = ({ filteredScenes, searchMovie }) => {
 
   return <ul className="container_li">{renderScenes}</ul>;
 };
-
+ListScenes.propTypes = {
+  filteredScenes: PropTypes.array,
+  searchMovie: PropTypes.string,
+};
 export default ListScenes;
