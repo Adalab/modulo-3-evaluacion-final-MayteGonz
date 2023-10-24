@@ -1,1 +1,36 @@
+@mixin dFlex($direction, $justify, $align) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+@mixin font($size, $color) {
+  font-size: $size;
+  color: $color;
+}
 
+@mixin card() {
+  border-radius: 0.8rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+  background-color: rgb(241, 246, 248);
+  border: 2px rgba(0, 0, 0, 0.048) solid;
+  padding: 1.2rem;
+  font-weight: 700;
+}
+
+@mixin cardHover() {
+  transition: 100ms;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+  background-color: rgb(227, 244, 250);
+  color: $violet;
+}
+@mixin btn($width) {
+  width: $width;
+  border: none;
+  color: white;
+  background-color: $violet;
+  border-radius: 2.5rem;
+  padding: 0.5rem;
+  cursor: pointer;
+}

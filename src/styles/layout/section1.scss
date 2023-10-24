@@ -1,26 +1,18 @@
 @import '../core/variables';
+@import '../core/mixins';
 .section1 {
-  display: flex;
-  flex-direction: column;
+  @include dFlex(column, none, center);
   padding: 1rem;
   gap: 2rem;
   text-align: center;
-  align-items: center;
 
   @media (min-width: 1200px) {
-    flex-direction: row;
-    justify-content: space-between;
+    @include dFlex(row, space-between, center);
     padding-block: 3rem;
     padding-inline: 4rem;
   }
   &_btn {
-    width: 20rem;
-    border: none;
-    color: white;
-    background-color: $violet;
-    border-radius: 2.5rem;
-    padding: 0.5rem;
-    cursor: pointer;
+    @include btn(20rem);
     &:hover {
       background-color: $violetB;
     }

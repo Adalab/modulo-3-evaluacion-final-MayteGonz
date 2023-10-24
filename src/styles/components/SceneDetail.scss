@@ -1,37 +1,24 @@
 @import '../core/variables';
+@import '../core/mixins';
 .article {
-  color: $violetB;
-  font-weight: 700;
+  @include font(1.3rem, $violetB);
+  @include card();
+  @include dFlex(column, none, center);
   width: fit-content;
-  padding-top: 6rem;
-  padding: 1.2rem;
   margin: auto;
   margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   gap: 1rem;
-  font-size: 1.3rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  background-color: rgb(241, 246, 248);
-  border: 2px rgba(0, 0, 0, 0.048) solid;
 
   @media (min-width: 768px) {
-    flex-direction: row;
-    justify-content: center;
+    @include dFlex(row, center, center);
     gap: 3rem;
-    align-items: center;
     padding: 3rem;
     margin-top: 4rem;
     font-size: 2rem;
   }
 
   &:hover {
-    transition: 100ms;
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
-    background-color: rgb(227, 244, 250);
-    color: $violet;
+    @include cardHover();
   }
   &_img {
     width: 200px;
@@ -40,10 +27,8 @@
     }
   }
   &_detail {
-    display: flex;
-    flex-direction: column;
+    @include dFlex(column, none, center);
     gap: 1rem;
-    align-items: center;
     &-title {
       font-size: 2.4rem;
       @media (min-width: 768px) {
@@ -59,9 +44,9 @@
       align-items: baseline;
       gap: 0.3rem;
       text-decoration: none;
-      color: rgb(63, 181, 224);
+      color: $blue;
       &:hover {
-        color: rgb(50, 141, 173);
+        color: $blueB;
       }
     }
   }

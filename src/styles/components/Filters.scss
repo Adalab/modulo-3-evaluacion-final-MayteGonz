@@ -1,17 +1,15 @@
 @import '../core/variables';
+@import '../core/mixins';
 .form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include dFlex(column, none, center);
 
   @media (min-width: 768px) {
     flex-direction: row;
     gap: 4rem;
   }
   &_label {
-    font-size: 1.5rem;
-    color: $violet;
-    margin: 0rem;
+    @include font(1.5rem, $violet);
+    margin: 1rem;
     font-weight: 700;
   }
   &_input {
