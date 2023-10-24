@@ -111,10 +111,10 @@ const App = () => {
             path="*"
             element={
               <>
-                <Link className="errorSearch" to={'/'}>
-                  Vuelve a la página principal
+                <Link className="btnBack" to={'/'}>
+                  Back to main page
                 </Link>
-                <p className="errorSearch">No existe esta página</p>
+                <p className="errorSearch">This page doesn&apos;t exist</p>
               </>
             }
           />

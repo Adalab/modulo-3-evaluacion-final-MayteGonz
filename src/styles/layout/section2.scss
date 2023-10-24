@@ -21,6 +21,9 @@
   background-color: $violet;
   border-radius: 2.5rem;
   cursor: pointer;
+  &:hover {
+    background-color: $violetB;
+  }
   @media (min-width: 768px) {
     width: 12rem;
   }
