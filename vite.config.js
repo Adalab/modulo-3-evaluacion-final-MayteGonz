@@ -4,5 +4,5 @@ import react from '@vitejs/plugin-react';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/EvaluacionFinal-Modulo3-Adalab/',
+  base: '/Wow-s-Owen-Wilson/',
 });
